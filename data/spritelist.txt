@@ -1,0 +1,54 @@
+// Warning: This file has spoilers!
+
+// Everything after "//" is ignored
+// Preceding and trailing whitespace is ignored for every line
+// sprites are animated and used by their respective classes
+
+// Player
+
+Knight
+res/knight/standing.png
+move res/knight/run1.png
+move res/knight/run2.png
+move res/knight/run3.png
+move res/knight/run2.png
+move .33
+jump res/knight/jump2.png
+// offsets
+res/knight/standing.png offsets:0,0
+res/knight/run1.png offsets:0,-19
+res/knight/run2.png offsets:0,-1
+res/knight/run3.png offsets:0,-1
+res/knight/jump2.png offsets:0,-36
+
+// Projectile
+
+SwordAttack
+res/projectile/invismissile.png
+
+// Terrain
+BreakablePlatform
+res/terrain/platform/breakableplatform.png
+
+BreakablePlatformG
+res/terrain/platform/breakableplatform.png
+
+Exit
+res/terrain/Exit.png
+
+FallingPlatform
+res/terrain/platform/platform.png
+danger res/terrain/platform/fallingplatform.png
+
+Platform
+res/terrain/platform/platform.png
+
+RisingPlatform
+res/terrain/platform/risingplatform.png
+
+// Enemies
+
+Snake
+res/enemy/snake/idle.png
+snakeMove res/enemy/snake/idle.png
+snakeMove res/enemy/snake/move.png

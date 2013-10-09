@@ -1,0 +1,16 @@
+*.class
+*.swp
+# Adding classpath to gitignore in order to
+# allow multiple os's to use this project
+.classpath
+# Package Files #
+*.war
+*.ear
+*.sav
+.settings/
+Tests/
+bin/
+
+Thumbs.db
+data/settings.txt
+/bin

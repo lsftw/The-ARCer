@@ -1,0 +1,25 @@
+
+// comments are ignored to end of line
+// lines are trimmed of leading and trailing spaces
+//
+// spawn at x,y						- sets player spawn point
+// platform widthxheight at x,y		- creates platform
+// ghostpirate at x,y				- creates ghost pirate
+
+//background
+Background VoidBackground
+
+//player
+spawn at 0,50
+
+//music
+//Music Menu
+
+// starting point
+platform at 0,268
+platform at 50,268
+platform at 100,268
+platform at 150,268
+
+//exit
+exit at 4436,568

@@ -1,0 +1,18 @@
+
+// TODO comments
+// TODO interpret tabs appropriately
+
+"Sentry Tower"
+LEVELSTART
+###########################
+#                         #
+#                         #
+#                         #
+#          A              #
+#          A              #
+#         ---             #
+#          |              #
+#@         |             X#
+#@         |             X#
+###########################
+LEVELEND
