@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project The-ARCer with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="thearcer.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="arcer.main.ArcerRunner"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="slick.jar AppleJavaExtensions.jar asm-debug-all.jar jinput.jar lwjgl.jar lwjgl-debug.jar lwjgl_test.jar lwjgl_util.jar lwjgl_util_applet.jar lzma.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="bin"/>
+            <zipfileset dir="lib" includes="slick.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="AppleJavaExtensions.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="asm-debug-all.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="jinput.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="lwjgl.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="lwjgl-debug.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="lwjgl_test.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="lwjgl_util.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="lwjgl_util_applet.jar"/>
+            <zipfileset dir="lib/lwjgl-2.8.5/jar" includes="lzma.jar"/>
+        </jar>
+    </target>
+</project>
