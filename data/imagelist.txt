@@ -1,7 +1,7 @@
 // Gui
 
 TitleImage
-res/blackbeard/standing.png
+res/knight/standing.png
 
 StartButton
 res/ui/titlescreen/start.png
