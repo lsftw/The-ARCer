@@ -26,6 +26,9 @@ res/knight/jump2.png offsets:0,-36
 SwordAttack
 res/projectile/invismissile.png
 
+Arrow
+res/terrain/platform/fallingplatform.png
+
 // Terrain
 BreakablePlatform
 res/terrain/platform/breakableplatform.png
@@ -52,3 +55,6 @@ Snake
 res/enemy/snake/idle.png
 snakeMove res/enemy/snake/idle.png
 snakeMove res/enemy/snake/move.png
+
+Archer
+res/knight/standing.png

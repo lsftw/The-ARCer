@@ -21,5 +21,10 @@ platform at 50,268
 platform at 100,268
 platform at 150,268
 
+archer at 380,50
+platform at 350,268
+platform at 400,268
+platform at 450,268
+
 //exit
 exit at 4436,568
