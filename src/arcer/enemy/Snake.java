@@ -3,9 +3,9 @@ package arcer.enemy;
 import org.newdawn.slick.Image;
 
 import arcer.core.Zone;
-import arcer.entity.Enemy;
+import arcer.entity.Unit;
 
-public class Snake extends Enemy {
+public class Snake extends Unit {
 	public int getBaseHealth() { return 75; }
 
 	protected float startX;
@@ -19,6 +19,7 @@ public class Snake extends Enemy {
 		vx = -1;
 		terrainCollidable = true;
 		startX = x;
+		allegiance = Team.ENEMY;
 	}
 
 	public Image getFrameToDraw() {

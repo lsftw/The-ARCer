@@ -31,7 +31,7 @@ public class ArcerRunner extends StateBasedGame {
 		Song.load();
 
 		/* Note: States MUST be added in the same order
-		 * as they appear in the enum BlackbeardsRedemption.States
+		 * as they appear in the enum ArcerRunner.States
 		 */
 		this.addState(new MainMenuState());
 		this.addState(new GameplayState());

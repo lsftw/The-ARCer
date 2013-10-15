@@ -6,9 +6,9 @@ import java.util.List;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-import arcer.entity.Enemy;
 import arcer.entity.Entity;
 import arcer.entity.Unit;
+import arcer.entity.Unit.Team;
 import arcer.entity.player.Player;
 import arcer.entity.terrain.Platform;
 import arcer.gui.Drawable;
@@ -154,13 +154,13 @@ public class Zone implements Drawable {
 		}
 		return null;
 	}
-	public Enemy getEnemyCollided(Entity collider) {
+	public Unit getEnemyCollided(Entity collider) {
 		Entity entity;
 		for (int i = 0; i < entities.size(); i++) {
 			entity = entities.get(i);
 			if (entity != collider) {
-				if (entity instanceof Enemy && entity.collidesWith(collider)) {
-					return (Enemy)entity;
+				if (entity instanceof Unit && ((Unit)entity).getAllegiance() == Team.ENEMY && entity.collidesWith(collider)) {
+					return (Unit)entity;
 				}
 			}
 		}

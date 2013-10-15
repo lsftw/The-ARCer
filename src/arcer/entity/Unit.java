@@ -5,6 +5,8 @@ public abstract class Unit extends Entity {
 	public static final int BASE_COLLISION_DAMAGE = 25;
 	protected int health = 0;
 	protected int collisionDamage = BASE_COLLISION_DAMAGE;
+	public enum Team { NEUTRAL, PLAYER, ENEMY }
+	protected Team allegiance = Team.PLAYER;
 
 	public Unit(Zone zone, float x, float y) {
 		super(zone, x, y);
@@ -30,6 +32,9 @@ public abstract class Unit extends Entity {
 	public void hitBy(Entity attacker, int damage) {
 		health -= damage;
 	}
+
+	public Team getAllegiance() { return allegiance; }
+	public void setAllegiance(Team allegiance) { this.allegiance = allegiance; }
 
 	public int getHealth() { return health; }
 	public void setHealth(int newHealth) { health = newHealth; }
