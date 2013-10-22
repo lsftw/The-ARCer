@@ -25,13 +25,17 @@ public class Zone implements Drawable {
 	protected LevelHandler levelHandler;
 	// Scrolling
 	protected Entity followed;
-	protected int xScroll = 0, yScroll = 0;
-	protected int xScrollTarget = 0, yScrollTarget = 0; // further = faster scroll
+	protected int xScroll, yScroll;
+	protected int xScrollTarget, yScrollTarget; // further = faster scroll
 	// Multimedia Experience
 	protected Image background;
 
 	public Zone(LevelHandler levelHandler) {
 		this.levelHandler = levelHandler;
+		xScroll = 0;
+		yScroll = -Settings.valueInt("windowHeight") + 10;
+		xScrollTarget = xScroll;
+		yScrollTarget = yScroll;
 	}
 	public void nextLevel() {
 		levelHandler.nextLevel();
@@ -90,13 +94,10 @@ public class Zone implements Drawable {
 	}
 	private void updateScrolling() {
 		if (followed != null) {
-			float xPos = followed.getXpos();
-			if (!followed.isFacingRight()) {
-				xPos += followed.getXsize();
-			} else {
-				xPos += followed.getXsize();
-			}
+			float xPos = followed.getXpos() + followed.getXsize() / 2;
 			xScrollTarget = (int)(xPos - Settings.valueInt("windowWidth")/2);
+			float yPos = followed.getYpos() + followed.getYsize();
+			yScrollTarget = (int)(yPos - Settings.valueInt("windowHeight"));
 		}
 	}
 	public int getXscroll() { return xScroll; }
@@ -239,6 +240,11 @@ public class Zone implements Drawable {
 		}
 		return null;
 	}
+	public int getMinX() { return 0; } // leftmost
+	public int getMinY() { return -1000; } // topmost
+	 // TODO load boundaries from level
+	public int getMaxX() { return 5000; } // rightmost
+	public int getMaxY() { return 0; } // bottommost
 	// Multimedia
 	public void setBackground(Image bg){ this.background = bg; }
 }

@@ -40,6 +40,7 @@ public class Level {
 	 * Used for changing levels.
 	 */
 	public void loadInto(Zone zone) {
+		zone.clear();
 		Knight p = new Knight(zone, spawnX, spawnY);
 		zone.addEntity(p);
 		zone.follow(p);

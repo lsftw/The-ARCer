@@ -108,7 +108,7 @@ public abstract class Player extends Unit {
 	protected void preDt() { // handle shooting and movement
 		super.preDt();
 
-		if (keyHeld(Action.MOVE_UP) && onPlatform) {
+		if (keyHeld(Action.MOVE_UP) && isOnPlatform()) {
 			vy = -jumpSpeed; this.moved();
 		}
 		if (keyHeld(Action.MOVE_LEFT)) {
@@ -119,8 +119,8 @@ public abstract class Player extends Unit {
 	}
 	protected void postDt() {
 		// prevent moving out of bounds
-		if (px < 0) px = 0;
-		if (py < 0) py = 0;
+//		if (px < 0) px = 0;
+//		if (py < 0) py = 0;
 	}
 	// Player actions
 	protected void moved() { } // Called whenever player tries to move

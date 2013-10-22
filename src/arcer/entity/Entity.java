@@ -26,7 +26,6 @@ public abstract class Entity {
 	protected float vx=0, vy=0;
 	protected Rectangle2D.Float hitbox = new Rectangle2D.Float(); // derived from px,py sx,sy
 	protected boolean terrainCollidable = true;
-	protected boolean onPlatform = false;
 	// Graphical
 	protected Sprite sprite;
 	protected boolean flipHorizontal = false; // facing right by default
@@ -134,30 +133,45 @@ public abstract class Entity {
 		} else if (vx > 0) {
 			flipHorizontal = false;
 		}
-		// Collision Detection
-		setXpos(px + vx);
-		if (terrainCollidable && vy < TERMINAL_VELOCITY){ // Gravity
+		// Velocity and Acceleration
+		float newx = px + vx;
+		if (newx < container.getMinX()) {
+			newx = container.getMinX();
+		} else if (newx + sx > container.getMaxX()) {
+			newx = container.getMaxX() - sx;
+		}
+		setXpos(newx);
+		// negative y is upwards, positive y is downwards
+		float newy = py + vy;
+		if (newy - sy < container.getMinY()) {
+//			Utility.log("miny" + newy);
+			newy = container.getMinY() + sy;
+		} else if (newy > container.getMaxY()) {
+//			Utility.log("maxy" + newy);
+			newy = container.getMaxY();
+		}
+		setYpos(newy);
+		if (terrainCollidable && vy < TERMINAL_VELOCITY && !isOnPlatform()){ // Gravity
 			vy++;
 		}
-		setYpos(py + vy);
+		// Collision Detection
 		if(container.collidesWithRightOf(this) != null){
-			//Utility.log("Collider Right: "+container.collidesWithRightOf(this).getXpos()+" Player: "+(this.getXpos()+this.getXsize()));
+//			Utility.log("Collider Right: "+container.collidesWithRightOf(this).getXpos()+" Player: "+(this.getXpos()+this.getXsize()));
 			this.setXpos(container.collidesWithRightOf(this).getXpos() - this.getXsize());
 		}
 		if(container.collidesWithLeftOf(this) != null){
-			//Utility.log("Collider Left: "+(container.collidesWithLeftOf(this).getXpos() + container.collidesWithLeftOf(this).getXsize())+" Player: "+this.getXpos());
+//			Utility.log("Collider Left: "+(container.collidesWithLeftOf(this).getXpos() + container.collidesWithLeftOf(this).getXsize())+" Player: "+this.getXpos());
 			this.setXpos(container.collidesWithLeftOf(this).getXpos() + container.collidesWithLeftOf(this).getXsize());
 		}
 		// prevent falling through platforms
-		onPlatform = (container.collidesWithBottomOf(this) != null);
 		if (container.collidesWithBottomOf(this) != null){
 			vy = 0;
-			//Utility.log("Collider Bottom: "+container.collidesWithBottomOf(this).getYpos() +" Player: "+this.getYpos()+this.getYsize());
+//			Utility.log("Collider Bottom: "+container.collidesWithBottomOf(this).getYpos() +" Player: "+this.getYpos()+this.getYsize());
 			this.setYpos(container.collidesWithBottomOf(this).getYpos() - this.getYsize());
 		}
 		if (container.collidesWithTopOf(this) != null){
 			vy = 0;
-			//Utility.log("Collider Top: "+container.collidesWithTopOf(this).getYpos() + container.collidesWithTopOf(this).getYsize()+" Player: "+this.getYpos());
+//			Utility.log("Collider Top: "+container.collidesWithTopOf(this).getYpos() + container.collidesWithTopOf(this).getYsize()+" Player: "+this.getYpos());
 			this.setYpos(container.collidesWithTopOf(this).getYpos() + container.collidesWithTopOf(this).getYsize());
 		}
 
@@ -196,7 +210,7 @@ public abstract class Entity {
 	public float getXvel() { return vx; }
 	public float getYvel() { return vy; }
 	public boolean isTerrainCollidable() { return terrainCollidable; }
-	public boolean isOnPlatform() { return onPlatform; }
+	public boolean isOnPlatform() { return (container.collidesWithBottomOf(this) != null) || Math.abs(py - container.getMaxY()) < .01; }
 	public boolean isFacingRight() { return !flipHorizontal; }
 	// Java Boilerplate
 	public void setZone(Zone zone) { container = zone; }
@@ -207,7 +221,6 @@ public abstract class Entity {
 	public void setXvel(float newxvel) { vx = newxvel; }
 	public void setYvel(float newyvel) { vy = newyvel; }
 	public void setTerrainCollidable(boolean collidability) { terrainCollidable = collidability; }
-	public void setOnPlatform(boolean newState) { onPlatform = newState; }
 
 	public String toString() {
 		return this.getClass().getSimpleName();

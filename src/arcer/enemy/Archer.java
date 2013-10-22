@@ -19,9 +19,9 @@ public class Archer extends Unit {
 	}
 
 	public void preDt() {
-		vy = -1; // antigrav kit
+		vy = 0; // antigrav kit
 		if (fireDelay == 0) {
-			Arrow fired = new Arrow(this, px + (flipHorizontal ? -50 : 100), py);
+			Arrow fired = new Arrow(this, px + (flipHorizontal ? -20 : 20 + sx), py);
 			container.addEntity(fired);
 			fireDelay = FIRE_COOLDOWN;
 		} else {

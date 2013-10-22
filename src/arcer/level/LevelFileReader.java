@@ -43,19 +43,19 @@ public class LevelFileReader extends SequentialFileReader {
 		} else if (spawnMatcher.matches()) {
 			px = Utility.getInt(spawnMatcher.group(1), -1);
 			py = Utility.getInt(spawnMatcher.group(2), -1);
-			level.setSpawnPoint(px, py);
+			level.setSpawnPoint(px, -py);
 		} else if (posMatcher.matches()) {
 			entityName = posMatcher.group(1);
 			px = Utility.getInt(posMatcher.group(2), -1);
 			py = Utility.getInt(posMatcher.group(3), -1);
-			level.addEntityEvent(entityName, px, py);
+			level.addEntityEvent(entityName, px, -py);
 		} else if (sizePosMatcher.matches()) {
 			entityName = sizePosMatcher.group(1);
 			sx = Utility.getInt(sizePosMatcher.group(2), -1);
 			sy = Utility.getInt(sizePosMatcher.group(3), -1);
 			px = Utility.getInt(sizePosMatcher.group(4), -1);
 			py = Utility.getInt(sizePosMatcher.group(5), -1);
-			level.addEntityEvent(entityName, sx, sy, px, py);
+			level.addEntityEvent(entityName, sx, sy, px, -py);
 		}
 	}
 }
