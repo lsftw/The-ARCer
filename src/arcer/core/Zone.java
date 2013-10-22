@@ -70,10 +70,13 @@ public class Zone implements Drawable {
 
 		updateEntities();
 		// scrolling velocity
-		float xScrollDelta = (xScrollTarget - xScroll) * .1f;
-		float yScrollDelta = (yScrollTarget - yScroll) * .1f;
-		xScroll += xScrollDelta;
-		yScroll += yScrollDelta;
+//		float xScrollDelta = (xScrollTarget - xScroll) * .1f;
+//		float yScrollDelta = (yScrollTarget - yScroll) * .1f;
+//		xScroll += xScrollDelta;
+//		yScroll += yScrollDelta;
+		// instantaneous camera
+		xScroll = xScrollTarget;
+		yScroll = yScrollTarget;
 	}
 
 	private void updateEntities() {
@@ -94,8 +97,9 @@ public class Zone implements Drawable {
 	}
 	private void updateScrolling() {
 		if (followed != null) {
-			float xPos = followed.getXpos() + followed.getXsize() / 2;
+			float xPos = followed.getXpos();
 			xScrollTarget = (int)(xPos - Settings.valueInt("windowWidth")/2);
+			if (xScrollTarget < getMinX()) { xScrollTarget = getMinX(); }
 			float yPos = followed.getYpos() + followed.getYsize();
 			yScrollTarget = (int)(yPos - Settings.valueInt("windowHeight"));
 		}
