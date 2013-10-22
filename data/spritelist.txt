@@ -27,7 +27,7 @@ SwordAttack
 res/projectile/invismissile.png
 
 Arrow
-res/terrain/platform/fallingplatform.png
+res/projectile/arrow.png
 
 // Terrain
 BreakablePlatform
