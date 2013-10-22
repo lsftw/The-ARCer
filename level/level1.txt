@@ -10,21 +10,21 @@
 Background VoidBackground
 
 //player
-spawn at 0,50
+spawn at 0,450
 
 //music
 //Music Menu
 
 // starting point
-platform at 0,268
-platform at 50,268
-platform at 100,268
-platform at 150,268
+platform at 0,568
+platform at 50,568
+platform at 100,568
+platform at 150,568
 
-archer at 380,50
-platform at 350,268
-platform at 400,268
-platform at 450,268
+archer at 380,450
+platform at 350,568
+platform at 400,568
+platform at 450,568
 
 //exit
 exit at 4436,568
