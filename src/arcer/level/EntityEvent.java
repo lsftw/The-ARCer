@@ -2,7 +2,6 @@ package arcer.level;
 
 import arcer.core.Zone;
 import arcer.enemy.Archer;
-import arcer.enemy.Snake;
 import arcer.entity.Entity;
 import arcer.entity.terrain.Exit;
 import arcer.entity.terrain.Platform;
@@ -15,7 +14,7 @@ import arcer.resource.Utility;
  * 	- Add a block in the case statement in trigger spawning it into zone.
  */
 public class EntityEvent {
-	public enum EntityType { PLATFORM, EXIT, SNAKE, ARCHER, BACKGROUND }
+	public enum EntityType { PLATFORM, EXIT, ARCHER, BACKGROUND }
 	protected EntityType entityType;
 	protected int sx, sy;
 	protected int px, py;
@@ -37,10 +36,6 @@ public class EntityEvent {
 			break;
 		case EXIT:
 			e = new Exit(zone, px, py);
-			zone.addEntity(e);
-			break;
-		case SNAKE:
-			e = new Snake(zone, px, py);
 			zone.addEntity(e);
 			break;
 		case ARCHER:
