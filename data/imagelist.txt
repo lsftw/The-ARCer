@@ -33,3 +33,6 @@ res/ui/blackheart.png
 
 VoidBackground
 res/levels/void.png
+
+CarBackground
+res/levels/shaltnotpark.jpg

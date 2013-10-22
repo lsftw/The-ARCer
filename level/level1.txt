@@ -7,7 +7,7 @@
 // ghostpirate at x,y				- creates ghost pirate
 
 //background
-Background VoidBackground
+Background CarBackground
 
 //player
 spawn at 0,0
