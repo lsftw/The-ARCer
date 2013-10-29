@@ -21,6 +21,9 @@ res/knight/run2.png offsets:0,-1
 res/knight/run3.png offsets:0,-1
 res/knight/jump2.png offsets:0,-36
 
+Shield
+res/shield/shield.png
+
 // Projectile
 
 SwordAttack
