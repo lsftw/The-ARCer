@@ -113,11 +113,11 @@ public abstract class Entity {
 			float drawStartX = px-this.container.getXscroll()+(flipHorizontal?sx:0)+offsetX;
 			float drawStartY = py-this.container.getYscroll()+offsetY;
 
-			toDraw.draw(drawStartX-px-sx/2, drawStartY-py-sy/2, drawSizeX, drawSizeY);
+			toDraw.draw(drawStartX, drawStartY, drawSizeX, drawSizeY);
 		}
 		if (Settings.valueBoolean("showHitbox")) { // shows entity hitbox, not frame drawbox
 			g.setColor(Color.red);
-			g.drawRect(px-this.container.getXscroll()-px-sx/2, py-this.container.getYscroll()-py-sy/2, sx, sy);
+			g.drawRect(px-this.container.getXscroll(), py-this.container.getYscroll(), sx, sy);
 		}
 //		g.rotate(-px - sx / 2, -py - sy / 2, -angle);
 	}
