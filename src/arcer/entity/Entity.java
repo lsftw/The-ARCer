@@ -24,6 +24,7 @@ public abstract class Entity {
 	protected int sx, sy; // use setters to change, hitbox derives from this
 	protected float px, py; // use setters to change, hitbox derives from this
 	protected float vx=0, vy=0;
+	protected float angle=0;
 	protected Rectangle2D.Float hitbox = new Rectangle2D.Float(); // derived from px,py sx,sy
 	protected boolean terrainCollidable = true;
 	// Graphical
@@ -64,6 +65,7 @@ public abstract class Entity {
 			Utility.printError("No frame to draw for " + this + "! Skipping.");
 			return;
 		}
+		g.rotate(px + sx/2, py + sy/2, angle);
 		int imageWidth = toDraw.getWidth();
 		int imageHeight = toDraw.getHeight();
 		if (tiledHorizontally || tiledVertically) {
@@ -117,6 +119,7 @@ public abstract class Entity {
 			g.setColor(Color.red);
 			g.drawRect(px-this.container.getXscroll(), py-this.container.getYscroll(), sx, sy);
 		}
+		g.rotate(px + sx/2, py + sy/2, -angle);
 	}
 	/**
 	 * Position & Velocity changing code goes here, so that dt() does appropriate collision checking afterwards.
