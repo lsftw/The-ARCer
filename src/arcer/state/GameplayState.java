@@ -46,6 +46,7 @@ public class GameplayState extends BbrGameState implements LevelHandler, TickHan
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		zone.draw(g);
+		shield.updatePosition(gc.getInput().getMouseX(), gc.getInput().getMouseY());
 		if (healthBar != null) {
 			healthBar.draw();
 		}
