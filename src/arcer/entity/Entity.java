@@ -1,12 +1,12 @@
 package arcer.entity;
 
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Float;
 import java.util.Random;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.geom.Transform;
 
 import arcer.core.Sprite;
 import arcer.core.Zone;
@@ -24,8 +24,8 @@ public abstract class Entity {
 	protected int sx, sy; // use setters to change, hitbox derives from this
 	protected float px, py; // use setters to change, hitbox derives from this
 	protected float vx=0, vy=0;
-	protected float angle=0;
-	protected Rectangle2D.Float hitbox = new Rectangle2D.Float(); // derived from px,py sx,sy
+	protected float angle=0; // in degrees
+	protected Polygon hitbox = new Polygon(); // derived from px,py sx,sy
 	protected boolean terrainCollidable = true;
 	// Graphical
 	protected Sprite sprite;
@@ -38,6 +38,11 @@ public abstract class Entity {
 		setYpos(ypos);
 		loadSprite();
 		autoResize();
+		hitbox.addPoint(xpos, ypos);
+		hitbox.addPoint(xpos+sx, ypos);
+		hitbox.addPoint(xpos+sx, ypos+sy);
+		hitbox.addPoint(xpos, ypos+sy);
+		hitbox.setClosed(true);
 	}
 
 	private void loadSprite() {
@@ -117,9 +122,10 @@ public abstract class Entity {
 		}
 		if (Settings.valueBoolean("showHitbox")) { // shows entity hitbox, not frame drawbox
 			g.setColor(Color.red);
-			g.drawRect(px, py, sx, sy);
+			g.draw(hitbox);
+			//g.drawRect(px, py, sx, sy);
 		}
-//		g.rotate(-px - sx / 2, -py - sy / 2, -angle);
+//		g.rotate(px + sx / 2, py + sy / 2, -angle);
 	}
 	/**
 	 * Position & Velocity changing code goes here, so that dt() does appropriate collision checking afterwards.
@@ -197,9 +203,11 @@ public abstract class Entity {
 		return hitbox.intersects(other.hitbox);
 	}
 	public boolean futureCollidesWith(Entity other, float xmod, float ymod) {
-		Rectangle2D.Float temp = (Float) other.hitbox.clone();
-		temp.setFrame(temp.getX() + xmod, temp.getY()+ymod, temp.getWidth(), temp.getHeight());
-		return temp.intersects(this.hitbox);
+		Polygon otherHitbox = other.hitbox;
+		otherHitbox = (Polygon) otherHitbox.transform(Transform.createTranslateTransform(xmod, ymod));
+		//temp.setFrame(temp.getX() + xmod, temp.getY()+ymod, temp.getWidth(), temp.getHeight());
+		boolean result = otherHitbox.intersects(this.hitbox);
+		return result;
 	}
 
 	public void hitBy(Entity attacker, int damage) { }
@@ -217,10 +225,26 @@ public abstract class Entity {
 	public boolean isFacingRight() { return !flipHorizontal; }
 	// Java Boilerplate
 	public void setZone(Zone zone) { container = zone; }
-	public void setXsize(int newxsize) { sx = newxsize; hitbox.width = sx; }
-	public void setYsize(int newysize) { sy = newysize; hitbox.height = sy; }
-	public void setXpos(float newxpos) { px = newxpos; hitbox.x = px; }
-	public void setYpos(float newypos) { py = newypos; hitbox.y = py; }
+	public void setXsize(int newxsize) {
+		if (sx != 0) { // if ==0, hitbox not yet initialized
+			hitbox = (Polygon) hitbox.transform(Transform.createScaleTransform(newxsize/sx, 1));
+		}
+		sx = newxsize; /*hitbox.width = sx;*/
+	}
+	public void setYsize(int newysize) {
+		if (sy != 0) { // if ==0, hitbox not yet initialized
+			hitbox = (Polygon) hitbox.transform(Transform.createScaleTransform(1, newysize/sy));
+		}
+		sy = newysize; /*hitbox.height = sy;*/
+	}
+	public void setXpos(float newxpos) {
+		hitbox = (Polygon) hitbox.transform(Transform.createTranslateTransform(newxpos - px, 0));
+		px = newxpos; /*hitbox.x = px;*/
+	}
+	public void setYpos(float newypos) {
+		hitbox = (Polygon) hitbox.transform(Transform.createTranslateTransform(0, newypos - py));
+		py = newypos; /*hitbox.y = py;*/
+	}
 	public void setXvel(float newxvel) { vx = newxvel; }
 	public void setYvel(float newyvel) { vy = newyvel; }
 	public void setTerrainCollidable(boolean collidability) { terrainCollidable = collidability; }

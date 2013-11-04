@@ -14,9 +14,16 @@ public class Arrow extends Projectile {
 
 		duration = Settings.valueInt("fps") * 10;
 		terrainCollidable = false;
+		calcAngle();
 	}
 	public void preDt() {
 		vy += 5f / (Settings.valueInt("fps")); // gravity
-		angle = (float) Math.toDegrees(Math.atan2(vy, vx));
+		calcAngle();
+//		angle++;
+		System.out.println((vx > 0) + "," + (vy > 0) + "->"+angle);
+	}
+	private void calcAngle() {
+		double radAngle = -Math.atan2(vy, vx) + Math.PI;
+		angle = (float) Math.toDegrees(radAngle);
 	}
 }
