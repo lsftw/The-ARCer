@@ -70,8 +70,8 @@ public abstract class Entity {
 			Utility.printError("No frame to draw for " + this + "! Skipping.");
 			return;
 		}
-//		g.rotate(px + sx/2, py + sy/2, angle);
-		toDraw.rotate(angle);
+		g.rotate(getXrotCenter(), getYrotCenter(), angle);
+//		toDraw.rotate(angle);
 		int imageWidth = toDraw.getWidth();
 		int imageHeight = toDraw.getHeight();
 		if (tiledHorizontally || tiledVertically) {
@@ -127,8 +127,8 @@ public abstract class Entity {
 //			g.draw(hitbox.transform(Transform.createRotateTransform(angle, hitbox.getCenterX(), hitbox.getCenterY())));
 			//g.drawRect(px, py, sx, sy);
 		}
-		toDraw.rotate(-angle);
-//		g.rotate(px + sx / 2, py + sy / 2, -angle);
+//		toDraw.rotate(-angle);
+		g.rotate(getXrotCenter(), getYrotCenter(), -angle);
 	}
 	/**
 	 * Position & Velocity changing code goes here, so that dt() does appropriate collision checking afterwards.
@@ -141,7 +141,8 @@ public abstract class Entity {
 		preDt();
 		// Facing
 		if (vx < 0) {
-			flipHorizontal = true;
+			// TODO uncomment when shield works properly when facing left
+//			flipHorizontal = true;
 		} else if (vx > 0) {
 			flipHorizontal = false;
 		}
@@ -223,6 +224,7 @@ public abstract class Entity {
 	public float getYpos() { return py; }
 	public float getXvel() { return vx; }
 	public float getYvel() { return vy; }
+	public float getAngle() { return angle; }
 	public boolean isTerrainCollidable() { return terrainCollidable; }
 	public boolean isOnPlatform() { return (container.collidesWithBottomOf(this) != null) || Math.abs(py - container.getMaxY()) < .01; }
 	public boolean isFacingRight() { return !flipHorizontal; }
@@ -250,7 +252,23 @@ public abstract class Entity {
 	}
 	public void setXvel(float newxvel) { vx = newxvel; }
 	public void setYvel(float newyvel) { vy = newyvel; }
+	public void setAngle(float angleInDegrees) {
+		hitbox = (Polygon) hitbox.transform(Transform.createRotateTransform(angleInDegrees - angle, getXrotCenter(), getYrotCenter()));
+//		float[] points = hitbox.getPoints();
+//		float[] newp = new float[points.length];
+//		for (int i = 0; i < points.length; i++) {
+//			newp[i] = (int)points[i];
+//		}
+//		System.out.println(Arrays.toString(newp));
+		angle = angleInDegrees;
+	}
 	public void setTerrainCollidable(boolean collidability) { terrainCollidable = collidability; }
+
+	public float getXcenter() { return hitbox.getCenterX(); }
+	public float getYcenter() { return hitbox.getCenterY(); }
+	// Center of rotation
+	public float getXrotCenter() { return getXcenter(); }
+	public float getYrotCenter() { return getYcenter(); }
 
 	public String toString() {
 		return this.getClass().getSimpleName();

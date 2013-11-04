@@ -16,6 +16,6 @@ muted=false
 skipTitle=true
 
 // Developer settings
-showHitbox=true
+showHitbox=false
 debug=false // shows Utility.log messages
-freeShield=true // shield moves with mouse and is not bound to player
+freeShield=false // shield moves with mouse and is not bound to player
