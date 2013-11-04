@@ -55,9 +55,11 @@ public class Zone implements Drawable {
 	public void draw(Graphics g) {
 		updateScrolling();
 		if (background != null) background.draw(0, 0);
+		g.translate(-xScroll, -yScroll);
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).draw(g);
 		}
+		g.translate(xScroll, yScroll);
 	}
 	public void dt() {
 		updateEntities();
@@ -104,8 +106,8 @@ public class Zone implements Drawable {
 			yScrollTarget = (int)(yPos - Settings.valueInt("windowHeight"));
 		}
 	}
-	public int getXscroll() { return xScroll; }
-	public int getYscroll() { return yScroll; }
+//	public int getXscroll() { return xScroll; }
+//	public int getYscroll() { return yScroll; }
 	// collision detection
 	public Platform getPlatformBelow(Entity mover) {
 		Entity collided;

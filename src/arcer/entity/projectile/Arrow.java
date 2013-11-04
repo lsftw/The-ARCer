@@ -17,6 +17,6 @@ public class Arrow extends Projectile {
 	}
 	public void preDt() {
 		vy += 5f / (Settings.valueInt("fps")); // gravity
-//		angle = (float) Math.toDegrees(Math.atan2(vy, vx));
+		angle = (float) Math.toDegrees(Math.atan2(vy, vx));
 	}
 }

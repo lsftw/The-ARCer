@@ -91,10 +91,10 @@ public abstract class Entity {
 						}
 					}
 
-					toDraw.draw(px+imageWidth*(i)-this.container.getXscroll(),
-							py+imageHeight*(j)-this.container.getYscroll(),
-							px+imageWidth*(i)-this.container.getXscroll()+drawWidth,
-							py+imageHeight*(j)-this.container.getYscroll()+drawHeight,
+					toDraw.draw(px+imageWidth*(i),
+							py+imageHeight*(j),
+							px+imageWidth*(i)+drawWidth,
+							py+imageHeight*(j)+drawHeight,
 							0, 0, cropWidth, cropHeight);
 				}
 			}
@@ -110,14 +110,14 @@ public abstract class Entity {
 				drawSizeX = (flipHorizontal?-imageWidth:imageWidth);
 				drawSizeY = imageHeight;
 			}
-			float drawStartX = px-this.container.getXscroll()+(flipHorizontal?sx:0)+offsetX;
-			float drawStartY = py-this.container.getYscroll()+offsetY;
+			float drawStartX = px+(flipHorizontal?sx:0)+offsetX;
+			float drawStartY = py+offsetY;
 
 			toDraw.draw(drawStartX, drawStartY, drawSizeX, drawSizeY);
 		}
 		if (Settings.valueBoolean("showHitbox")) { // shows entity hitbox, not frame drawbox
 			g.setColor(Color.red);
-			g.drawRect(px-this.container.getXscroll(), py-this.container.getYscroll(), sx, sy);
+			g.drawRect(px, py, sx, sy);
 		}
 //		g.rotate(-px - sx / 2, -py - sy / 2, -angle);
 	}
