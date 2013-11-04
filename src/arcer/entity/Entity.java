@@ -71,6 +71,7 @@ public abstract class Entity {
 			return;
 		}
 //		g.rotate(px + sx/2, py + sy/2, angle);
+		toDraw.rotate(angle);
 		int imageWidth = toDraw.getWidth();
 		int imageHeight = toDraw.getHeight();
 		if (tiledHorizontally || tiledVertically) {
@@ -122,9 +123,11 @@ public abstract class Entity {
 		}
 		if (Settings.valueBoolean("showHitbox")) { // shows entity hitbox, not frame drawbox
 			g.setColor(Color.red);
-			g.draw(hitbox.transform(Transform.createRotateTransform(angle, px+sx/2, py+sy/2)));
+			g.draw(hitbox);
+//			g.draw(hitbox.transform(Transform.createRotateTransform(angle, hitbox.getCenterX(), hitbox.getCenterY())));
 			//g.drawRect(px, py, sx, sy);
 		}
+		toDraw.rotate(-angle);
 //		g.rotate(px + sx / 2, py + sy / 2, -angle);
 	}
 	/**

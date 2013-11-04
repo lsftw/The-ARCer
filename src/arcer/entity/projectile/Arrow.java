@@ -20,7 +20,7 @@ public class Arrow extends Projectile {
 		vy += 5f / (Settings.valueInt("fps")); // gravity
 		calcAngle();
 //		angle++;
-		System.out.println((vx > 0) + "," + (vy > 0) + "->"+angle);
+		System.out.println((vx > 0 ? "+X" : "-X") + "," + (vy > 0 ? "+Y" : "-Y") + "->"+angle);
 	}
 	public void postDt() { // go out of bounds -> remove
 		if (px + sx < container.getMinX() || px > container.getMaxX()
@@ -29,7 +29,10 @@ public class Arrow extends Projectile {
 		}
 	}
 	private void calcAngle() {
-		double radAngle = -Math.atan2(vy, vx) + Math.PI;
+		double radAngle = Math.atan2(vy, vx);
+		if (vx < 0) {
+			radAngle += Math.PI/2;
+		}
 		angle = (float) Math.toDegrees(radAngle);
 	}
 }

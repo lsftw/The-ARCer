@@ -17,10 +17,6 @@ platform at 100,550
 
 archer at 400,200
 
-archer at 500,200
-
-archer at 600,200
-
 //music
 //Music Menu
 
