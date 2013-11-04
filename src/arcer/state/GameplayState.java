@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import arcer.core.Animation;
 import arcer.core.TickHandler;
 import arcer.core.Zone;
+import arcer.entity.player.Knight;
 import arcer.entity.player.Player;
 import arcer.entity.player.Shield;
 import arcer.gui.BbrGameState;
@@ -40,13 +41,17 @@ public class GameplayState extends BbrGameState implements LevelHandler, TickHan
 		player = zone.getPlayer();
 		player.setGameplayState(this);
 		healthBar = new HealthController(player);
-		shield = new Shield(player);
-		zone.addEntity(shield);
+		if (player instanceof Knight) {
+			shield = ((Knight)player).makeShield();
+			zone.addEntity(shield);
+		}
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		zone.draw(g);
-		shield.updatePosition(gc.getInput().getMouseX(), gc.getInput().getMouseY());
+		if (shield != null) {
+			shield.updatePosition(gc.getInput().getMouseX(), gc.getInput().getMouseY());
+		}
 		if (healthBar != null) {
 			healthBar.draw();
 		}
@@ -75,6 +80,10 @@ public class GameplayState extends BbrGameState implements LevelHandler, TickHan
 				player = zone.getPlayer();
 				healthBar.changeUnit(player);
 				player.setGameplayState(this);
+				if (player instanceof Knight) {
+					shield = ((Knight)player).makeShield();
+					zone.addEntity(shield);
+				}
 			}
 		}
 	}

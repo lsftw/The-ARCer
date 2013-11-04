@@ -7,7 +7,7 @@ import arcer.resource.Settings;
 public class Arrow extends Projectile {
 	public Arrow(Entity owner, float xpos, float ypos) {
 		super(owner, xpos, ypos);
-		damage = 25;
+		damage = 100;
 		targetting = TargetType.ALL;
 		vx = owner.isFacingRight() ? 2 : -2;
 		vy = -10;

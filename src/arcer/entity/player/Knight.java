@@ -9,6 +9,7 @@ import arcer.entity.projectile.SwordAttack;
 public class Knight extends Player {
 	public int getBaseHealth() { return 1000; }
 	public static final int BASE_MOVESPEED = 10;
+	protected Shield shield;
 
 	public Knight(Zone container, float xpos, float ypos) {
 		super(container, xpos, ypos);
@@ -28,6 +29,12 @@ public class Knight extends Player {
 			return sprite.getFrame("move");
 		}
 		return super.getFrameToDraw();
+	}
+	public Shield makeShield() {
+		if (shield == null) {
+			shield = new Shield(this);
+		}
+		return shield;
 	}
 
 	protected void preDt() {
