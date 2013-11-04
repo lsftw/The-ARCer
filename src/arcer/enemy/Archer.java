@@ -8,8 +8,9 @@ import arcer.resource.Settings;
 public class Archer extends Unit {
 	public int getBaseHealth() { return 75; }
 
-	protected static final int FIRE_COOLDOWN = Settings.valueInt("fps");
+	protected static final int FIRE_COOLDOWN = Settings.valueInt("fps")/2;
 	protected int fireDelay = 0;
+	protected Arrow arrow;
 
 	public Archer(Zone zone, float x, float y) {
 		super(zone, x, y);
@@ -21,9 +22,12 @@ public class Archer extends Unit {
 	public void preDt() {
 		vy = 0; // antigrav kit
 		if (fireDelay == 0) {
-			Arrow fired = new Arrow(this, px + (flipHorizontal ? -20 : 20 + sx), py);
-			container.addEntity(fired);
-			fireDelay = FIRE_COOLDOWN;
+			if (!container.hasEntity(arrow)){
+				Arrow fired = new Arrow(this, px + (flipHorizontal ? -20 : 20 + sx), py);
+				container.addEntity(fired);
+				arrow = fired;
+				fireDelay = FIRE_COOLDOWN;
+			}
 		} else {
 			fireDelay--;
 		}

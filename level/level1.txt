@@ -15,11 +15,11 @@ spawn at 0,0
 platform at 0,150
 platform at 100,550
 
-archer at 400,300
+archer at 400,200
 
-archer at 500,300
+archer at 500,200
 
-archer at 600,300
+archer at 600,200
 
 //music
 //Music Menu

@@ -122,7 +122,7 @@ public abstract class Entity {
 		}
 		if (Settings.valueBoolean("showHitbox")) { // shows entity hitbox, not frame drawbox
 			g.setColor(Color.red);
-			g.draw(hitbox);
+			g.draw(hitbox.transform(Transform.createRotateTransform(angle, px+sx/2, py+sy/2)));
 			//g.drawRect(px, py, sx, sy);
 		}
 //		g.rotate(px + sx / 2, py + sy / 2, -angle);

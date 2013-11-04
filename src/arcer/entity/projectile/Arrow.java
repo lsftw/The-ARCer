@@ -22,6 +22,12 @@ public class Arrow extends Projectile {
 //		angle++;
 		System.out.println((vx > 0) + "," + (vy > 0) + "->"+angle);
 	}
+	public void postDt() { // go out of bounds -> remove
+		if (px + sx < container.getMinX() || px > container.getMaxX()
+				|| py < container.getMinY() || py - 2*sy > container.getMaxY()) {
+			die();
+		}
+	}
 	private void calcAngle() {
 		double radAngle = -Math.atan2(vy, vx) + Math.PI;
 		angle = (float) Math.toDegrees(radAngle);
