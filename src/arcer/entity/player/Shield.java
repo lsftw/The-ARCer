@@ -1,10 +1,15 @@
 package arcer.entity.player;
 
-import arcer.core.Zone;
 import arcer.entity.Entity;
 
 public class Shield extends Entity {
-	public Shield(Zone container, float xpos, float ypos) {
-		super(container, xpos, ypos);
+	protected Entity followed;
+	public Shield(Entity followed) {
+		super(followed.getZone(), followed.getXpos(), followed.getYpos());
+		this.followed = followed;
+	}
+	public void preDt() {
+		setXpos(followed.getXpos());
+		setYpos(followed.getYpos());
 	}
 }

@@ -24,7 +24,7 @@ public class Knight extends Player {
 	}
 	public Image getFrameToDraw() {
 		if (vy < 0) {
-			container.addEntity(new Shield(container, px, py));
+//			container.addEntity(new Shield(this));
 			return sprite.getFrame("jump");
 		} else if (Math.abs(vx) > 0.01) {
 			return sprite.getFrame("move");

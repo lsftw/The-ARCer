@@ -9,6 +9,7 @@ import arcer.core.Animation;
 import arcer.core.TickHandler;
 import arcer.core.Zone;
 import arcer.entity.player.Player;
+import arcer.entity.player.Shield;
 import arcer.gui.BbrGameState;
 import arcer.gui.HealthController;
 import arcer.level.Level;
@@ -24,6 +25,7 @@ public class GameplayState extends BbrGameState implements LevelHandler, TickHan
 	protected Zone zone;
 	protected Level curLevel;
 	protected Player player;
+	protected Shield shield;
 	protected HealthController healthBar;
 
 	public GameplayState() throws SlickException {
@@ -38,6 +40,8 @@ public class GameplayState extends BbrGameState implements LevelHandler, TickHan
 		player = zone.getPlayer();
 		player.setGameplayState(this);
 		healthBar = new HealthController(player);
+		shield = new Shield(player);
+		zone.addEntity(shield);
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
