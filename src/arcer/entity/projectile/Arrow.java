@@ -19,8 +19,7 @@ public class Arrow extends Projectile {
 	public void preDt() {
 		vy += 5f / (Settings.valueInt("fps")); // gravity
 		calcAngle();
-//		angle++;
-		System.out.println((vx > 0 ? "+X" : "-X") + "," + (vy > 0 ? "+Y" : "-Y") + "->"+angle);
+//		System.out.println((vx > 0 ? "+X" : "-X") + "," + (vy > 0 ? "+Y" : "-Y") + "->"+angle);
 	}
 	public void postDt() { // go out of bounds -> remove
 		if (px + sx < container.getMinX() || px > container.getMaxX()

@@ -18,3 +18,4 @@ skipTitle=true
 // Developer settings
 showHitbox=true
 debug=false // shows Utility.log messages
+freeShield=true // shield moves with mouse and is not bound to player

@@ -6,7 +6,6 @@ import arcer.core.Zone;
 import arcer.entity.projectile.Projectile;
 import arcer.entity.projectile.SwordAttack;
 
-// TODO rotated rectangle shield
 public class Knight extends Player {
 	public int getBaseHealth() { return 1000; }
 	public static final int BASE_MOVESPEED = 10;
@@ -24,7 +23,6 @@ public class Knight extends Player {
 	}
 	public Image getFrameToDraw() {
 		if (vy < 0) {
-//			container.addEntity(new Shield(this));
 			return sprite.getFrame("jump");
 		} else if (Math.abs(vx) > 0.01) {
 			return sprite.getFrame("move");

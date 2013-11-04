@@ -28,6 +28,7 @@ public final class Settings {
 		verify("animationDelay", VariableType.LONG, "30"); // hidden by default
 		verify("showHitbox", VariableType.BOOLEAN, "false");
 		verify("debug", VariableType.BOOLEAN, "false");
+		verify("freeShield", VariableType.BOOLEAN, "false");
 	}
 
 	static {

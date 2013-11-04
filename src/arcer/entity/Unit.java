@@ -2,11 +2,10 @@ package arcer.entity;
 
 import arcer.core.Zone;
 public abstract class Unit extends Entity {
-	public static final int BASE_COLLISION_DAMAGE = 25;
-	protected int health = 0;
-	protected int collisionDamage = BASE_COLLISION_DAMAGE;
 	public enum Team { NEUTRAL, PLAYER, ENEMY }
 	protected Team allegiance = Team.PLAYER;
+	protected int health = 0;
+	protected boolean canDie = true; // should die if health <= 0
 
 	public Unit(Zone zone, float x, float y) {
 		super(zone, x, y);
@@ -38,5 +37,5 @@ public abstract class Unit extends Entity {
 
 	public int getHealth() { return health; }
 	public void setHealth(int newHealth) { health = newHealth; }
-	public boolean isDead(){ return health <= 0; }
+	public boolean isDead() { return canDie && health <= 0; }
 }
