@@ -24,5 +24,41 @@ archer at 800,200
 
 archer at 900,200
 
+archer at 1000,200
+
+archer at 1100,200
+
+archer at 1200,200
+
+archer at 1300,200
+
+archer at 1400,200
+
+archer at 1500,200
+
+archer at 1600,200
+
+archer at 1700,200
+
+archer at 1800,200
+
+archer at 1900,200
+
+archer at 2000,200
+
+archer at 2100,200
+
+archer at 2200,200
+
+archer at 2300,200
+
+archer at 2400,200
+
+archer at 2500,200
+
+archer at 2600,200
+
+archer at 2700,200
+
 //exit
 exit at 1000,30

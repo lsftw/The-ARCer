@@ -2,5 +2,6 @@
 
 level/level1.txt
 level/level2.txt
+level/level3.txt
 level/win.txt
 level/gameover.txt

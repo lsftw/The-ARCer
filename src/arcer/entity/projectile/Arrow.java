@@ -8,7 +8,7 @@ public class Arrow extends Projectile {
 	public Arrow(Entity owner, float xpos, float ypos) {
 		super(owner, xpos, ypos);
 		damage = 100;
-		targetting = TargetType.ALL;
+		targetting = TargetType.PLAYER;
 		vx = owner.isFacingRight() ? 2 : -2;
 		vy = -10;
 

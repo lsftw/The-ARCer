@@ -106,6 +106,12 @@ public class Zone implements Drawable {
 			yScrollTarget = (int)(yPos - Settings.valueInt("windowHeight"));
 		}
 	}
+	public float getAdjustedX(float xpos) {
+		return xpos - xScroll;
+	}
+	public float getAdjustedY(float ypos) {
+		return ypos - yScroll;
+	}
 //	public int getXscroll() { return xScroll; }
 //	public int getYscroll() { return yScroll; }
 	// collision detection

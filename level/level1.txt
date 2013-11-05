@@ -12,13 +12,14 @@ Background CarBackground
 //player
 spawn at 0,0
 
-platform at 0,150
-platform at 100,550
+archer at 300,200
 
 archer at 400,200
+
+archer at 500,200
 
 //music
 //Music Menu
 
 //exit
-exit at 1000,30
+exit at 700,30

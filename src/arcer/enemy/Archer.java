@@ -15,19 +15,18 @@ public class Archer extends Unit {
 	public Archer(Zone zone, float x, float y) {
 		super(zone, x, y);
 		flipHorizontal = true;
-//		terrainCollidable = true;
 		allegiance = Team.ENEMY;
 	}
 
 	public void preDt() {
 		vy = 0; // antigrav kit
 		if (fireDelay == 0) {
-			if (!container.hasEntity(arrow)){
-				Arrow fired = new Arrow(this, px + (flipHorizontal ? -20 : 20 + sx), py);
-				container.addEntity(fired);
-				arrow = fired;
-				fireDelay = FIRE_COOLDOWN;
-			}
+			//			if (!container.hasEntity(arrow)){
+			Arrow fired = new Arrow(this, px + (flipHorizontal ? -20 : 20 + sx), py);
+			container.addEntity(fired);
+			arrow = fired;
+			fireDelay = FIRE_COOLDOWN;
+			//			}
 		} else {
 			fireDelay--;
 		}

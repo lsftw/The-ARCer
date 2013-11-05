@@ -22,8 +22,8 @@ public class Shield extends Unit {
 	}
 	public void preDt() {
 		if (!Settings.valueBoolean("freeShield")) {
-			float dx = mouseX - followed.getXcenter();
-			float dy = mouseY - followed.getYcenter();
+			float dx = mouseX - container.getAdjustedX(followed.getXcenter());
+			float dy = mouseY - container.getAdjustedY(followed.getYcenter());
 			double shieldAngle = Math.atan2(dy, dx);
 			if (!followed.isFacingRight()) {
 				shieldAngle = shieldAngle + Math.PI;
