@@ -16,4 +16,4 @@ Music Reverse
 spawn at 0,0
 
 //exit
-exit at 700,30
+exit at 1200,30

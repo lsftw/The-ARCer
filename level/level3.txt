@@ -9,6 +9,9 @@
 //background
 Background CarBackground
 
+//music
+Music Main
+
 //player
 spawn at 0,0
 
