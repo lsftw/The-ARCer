@@ -121,14 +121,14 @@ public abstract class Entity {
 
 			toDraw.draw(drawStartX, drawStartY, drawSizeX, drawSizeY);
 		}
+//		toDraw.rotate(-angle);
+		g.rotate(getXrotCenter(), getYrotCenter(), -angle);
 		if (Settings.valueBoolean("showHitbox")) { // shows entity hitbox, not frame drawbox
 			g.setColor(Color.red);
 			g.draw(hitbox);
 //			g.draw(hitbox.transform(Transform.createRotateTransform(angle, hitbox.getCenterX(), hitbox.getCenterY())));
 			//g.drawRect(px, py, sx, sy);
 		}
-//		toDraw.rotate(-angle);
-		g.rotate(getXrotCenter(), getYrotCenter(), -angle);
 	}
 	/**
 	 * Position & Velocity changing code goes here, so that dt() does appropriate collision checking afterwards.

@@ -19,6 +19,7 @@ public class Shield extends Unit {
 		this.followed = followed;
 		terrainCollidable = false;
 		canDie = false;
+		allegiance = Team.PLAYER;
 	}
 	public void preDt() {
 		if (!Settings.valueBoolean("freeShield")) {

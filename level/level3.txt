@@ -61,4 +61,4 @@ archer at 2600,200
 archer at 2700,200
 
 //exit
-exit at 1000,30
+exit at 2800,30

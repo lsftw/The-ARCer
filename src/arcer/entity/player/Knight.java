@@ -7,7 +7,7 @@ import arcer.entity.projectile.Projectile;
 import arcer.entity.projectile.SwordAttack;
 
 public class Knight extends Player {
-	public int getBaseHealth() { return 1000; }
+	public int getBaseHealth() { return 500; }
 	public static final int BASE_MOVESPEED = 10;
 	protected Shield shield;
 

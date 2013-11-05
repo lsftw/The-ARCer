@@ -179,13 +179,13 @@ public class Zone implements Drawable {
 		}
 		return null;
 	}
-	public Player getPlayerCollided(Entity collider) {
+	public Unit getPlayerCollided(Entity collider) {
 		Entity entity;
 		for (int i = 0; i < entities.size(); i++) {
 			entity = entities.get(i);
 			if (entity != collider) {
-				if (entity instanceof Player && entity.collidesWith(collider)) {
-					return (Player)entity;
+				if (entity instanceof Unit && ((Unit)entity).getAllegiance() == Team.PLAYER && entity.collidesWith(collider)) {
+					return (Unit)entity;
 				}
 			}
 		}
