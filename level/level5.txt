@@ -9,6 +9,9 @@
 //background
 Background ArrowZoneBackground
 
+//music
+Music Reverse
+
 //player
 spawn at 0,0
 

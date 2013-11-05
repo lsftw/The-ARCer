@@ -1,3 +1,9 @@
 
-//Menu
-//res/audio/music/menu_music.aiff
+Menu
+res/audio/music/main_theme.aiff
+
+Main
+res/audio/music/main_theme.aiff
+
+Reverse
+res/audio/music/main_theme_reversed.aiff

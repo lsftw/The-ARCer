@@ -9,19 +9,17 @@
 //background
 Background CarBackground
 
+//music
+Music Menu
+
 //player
 spawn at 0,0
 
 archer at 400,200
-
 archer at 500,200
-
 archer at 600,200
-
 archer at 700,200
-
 archer at 800,200
-
 archer at 900,200
 
 //exit
