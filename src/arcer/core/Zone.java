@@ -36,6 +36,13 @@ public class Zone implements Drawable {
 		yScroll = -Settings.valueInt("windowHeight") + 10;
 		xScrollTarget = xScroll;
 		yScrollTarget = yScroll;
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 5; j++) {
+				int x = 300 + i * 50;
+				int y = 100 + j * 50;
+				System.out.println("archer at " + x + "," + y);
+			}
+		}
 	}
 	public void nextLevel() {
 		levelHandler.nextLevel();

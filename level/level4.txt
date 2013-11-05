@@ -1,0 +1,16 @@
+
+// comments are ignored to end of line
+// lines are trimmed of leading and trailing spaces
+//
+// spawn at x,y						- sets player spawn point
+// platform widthxheight at x,y		- creates platform
+// archer at x,y					- creates archer
+
+//background
+Background CarBackground
+
+//player
+spawn at 0,0
+
+//exit
+exit at 700,30
