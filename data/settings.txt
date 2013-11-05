@@ -13,7 +13,7 @@ windowWidth=1024
 windowHeight=768
 fullScreen=false
 muted=false
-skipTitle=true
+skipTitle=false
 
 // Developer settings
 showHitbox=false

@@ -87,6 +87,8 @@ public class MainMenuState extends BbrGameState {
 			goingToStart = true;
 		} else if (b == exitButton) {
 			goingToExit = true;
+		} else if (b == helpButton) {
+			b.setImage(Art.getSprite("Archer").getFrame());
 		}
 	}
 
