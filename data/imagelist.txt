@@ -36,3 +36,6 @@ res/levels/void.png
 
 CarBackground
 res/levels/shaltnotpark.jpg
+
+ArrowZoneBackground
+res/levels/thearrowzone.jpg

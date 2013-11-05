@@ -7,7 +7,7 @@
 // archer at x,y					- creates archer
 
 //background
-Background CarBackground
+Background ArrowZoneBackground
 
 //player
 spawn at 0,0
