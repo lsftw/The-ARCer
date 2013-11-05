@@ -54,10 +54,5 @@ res/terrain/platform/risingplatform.png
 
 // Enemies
 
-Snake
-res/enemy/snake/idle.png
-snakeMove res/enemy/snake/idle.png
-snakeMove res/enemy/snake/move.png
-
 Archer
-res/knight/standing.png
+res/enemy/archer/standing.png
