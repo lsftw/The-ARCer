@@ -13,6 +13,7 @@ public final class Song {
 
 	private static boolean loaded = false;
 	private static boolean isMuted = false;
+	private static String previousSongName;
 	private static Music currentSong;
 	private Song() { }
 	//
@@ -46,8 +47,16 @@ public final class Song {
 		return new Music(songName);
 	}
 	public static void playMusic(String songName){
+		System.out.println("Play" + songName);
 		if (isMuted) return;
-		stopMusic(); // stop previous song
+		if (songName != null) {
+			if (!songName.equals(previousSongName)) {
+				System.out.println("done" + previousSongName);
+				stopMusic(); // stop previous song
+			}
+		}
+
+		previousSongName = songName;
 		currentSong = songs.get(songName);
 		if (currentSong != null) {
 			currentSong.loop();
