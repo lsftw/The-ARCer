@@ -23,7 +23,7 @@ public abstract class Player extends Unit {
 	protected float jumpSpeed = 18;
 	public enum Action {MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT,
 		ACT_FIRE, TPHOME, NLEVEL, RESTART};
-	public static final int[] DEFAULT_KEYS = {Input.KEY_UP, Input.KEY_DOWN, Input.KEY_LEFT, Input.KEY_RIGHT,
+	public static final int[] DEFAULT_KEYS = {Input.KEY_W, Input.KEY_S, Input.KEY_A, Input.KEY_D,
 		Input.KEY_X, Input.KEY_K, Input.KEY_N, Input.KEY_R};
 	// Controls
 	private ArrayList<Action> controlAction = new ArrayList<Action>();
